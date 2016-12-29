@@ -4,12 +4,12 @@ RSpec.describe Comment, type: :model do
   let(:topic) { create(:topic) }
   let(:user) { create(:user) }
   let(:post) { create(:post) }
-  let(:comment) { Comment.create!(body: 'Comment Body', post: post, user: user) }
+  let(:comment) { create(:comment, post: post, user: user) }
 
-    it { is_expected.to belong_to(:post) }
-    it { is_expected.to belong_to(:user) }
-    it { is_expected.to validate_presence_of(:body) }
-    it { is_expected.to validate_length_of(:body).is_at_least(5) }
+  it { is_expected.to belong_to(:post) }
+  it { is_expected.to belong_to(:user) }
+  it { is_expected.to validate_presence_of(:body) }
+  it { is_expected.to validate_length_of(:body).is_at_least(5) }
 
 
   describe "attributes" do
@@ -20,7 +20,7 @@ RSpec.describe Comment, type: :model do
 
   describe "after_create" do
     before do
-      @another_comment = Comment.new(body: 'Comment Body', post: post, user: user)
+      @another_comment = create(:comment, post: post, user: user)
     end
 
     it "sends an email to users who have favorited the post" do
