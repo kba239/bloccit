@@ -6,7 +6,7 @@ Bloccit is a Ruby on Rails application that allows users to create topics and po
 
 Features:
 * Users can create, sign in and out of, and update an account
-* Users can have either a standard or admin account
+* Users can have either a standard or an admin account
 * Users can create topics, posts, and comments
 * Users can vote on and favorite posts
 * Users can edit and delete their own topics, posts, and comments
